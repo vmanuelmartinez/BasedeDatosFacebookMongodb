@@ -1,0 +1,185 @@
+use('facebook');
+
+// CRIANDO AS COLECOES.
+
+db.createCollection('usuarios'); //LISTO
+db.createCollection('grupo'); //LISTO
+db.createCollection('post'); // LISTO
+db.createCollection('amigos'); // LISTO
+
+use('facebook');
+db.usuarios.insertMany([
+   {nome: 'Victor', sobrenome: 'Martinez Fuentes', senha: 123123, 
+  CPF: 70506506258, idade: 23, email: 'victormmartinezf@gmail.com'},
+
+    {nome: 'Darianis', sobrenome: 'Lopez Terán', 'senha': 1231123, 
+  CPF: 70506506257, idade: 23, email: 'darianis@gmail.com'},
+
+    {nome: 'Lucas', sobrenome: 'Martinez Morales', senha: 91423, 
+  CPF: 70506506256, idade: 7, email: 'luquitas@gmail.com'},
+
+    {nome: 'Esther', sobrenome: 'Martinez Fuentes', senha: 7777123, 
+  CPF: 70506506255, idade: 20, email: 'estheravenue@gmail.com'}]);
+
+  //INSERINDO DADOS EM GRUPO:
+
+  use('facebook');
+  db.grupo.insertMany([ 
+
+    {nome: 'Grupo da arte',
+    usuarios: [
+    {cpf: 9869685},
+    {cpf: 958676765}
+    ]},
+
+     {nome: 'Grupo da Cozinha',
+    usuarios: [
+    {cpf: 3369685},
+    {cpf: 448676765}
+    ]},
+
+     {nome: 'Grupo da Musica',
+    usuarios: [
+    {cpf: 5569685},
+    {cpf: 668676765}
+    ]},
+
+     {nome: 'Grupo da Comida',
+    usuarios: [
+    {cpf: 34569685},
+    {cpf: 668676765}
+    ]},
+
+     {nome: 'Grupo da Lua',
+    usuarios: [
+    {cpf: 8979869685},
+    {cpf: 76578676765}
+    ]}]);
+
+//INSERINDO DADOS EM POST
+  use('facebook');
+  db.post.insertMany(  [   
+
+{tipo: 'video', url: 'facebook.com', titulo: 'A tecnologia na atualidade',
+comentarios: [{
+comentario:'gostei do post, tem muita coisa boa aqui', cpf: 5787678788},
+{comentario: 'gostei da ideia', cpf: 9891293912}],
+cpf: 123912399,
+data_criacao: new Date('2002-04-28')},
+
+{tipo: 'foto', url: 'facebook.com', titulo: 'A programacao é essencial pro mundo',
+comentarios: [{
+comentario:'Para mim foi um pouco dificil aprender programacao', cpf: 5787678788},
+{comentario: 'Javascript é a linguagem que vou aprender!', cpf: 9891293912}],
+cpf: 123912399,
+data_criacao: new Date('2008-04-28')},
+
+{tipo: 'foto', url: 'facebook.com', titulo: 'Os animais na atualidade',
+comentarios: [{
+comentario:'Adoro gato', cpf: 5787678788},
+{comentario: 'Tenho um gato em casa, vc vai amar', cpf: 9891293912}],
+cpf: 123912399,
+data_criacao: new Date('2010-04-28')},
+
+{tipo: 'video', url: 'facebook.com', titulo: 'A tecnologia e boa so se vc souber usar',
+comentarios: [{
+comentario:'Gosto muito de HTML!', cpf: 5787678788},
+{comentario: 'I love PHP', cpf: 9891293912}],
+cpf: 123912399,
+data_criacao: new Date('2022-04-28')},
+
+
+{tipo: 'foto', url: 'facebook.com', titulo: 'VS CODE',
+comentarios: [{
+comentario:'VSCODE tem muitas ferramentas boas', cpf: 5787678788},
+{comentario: 'Faz tempo que uso o VSCODE!', cpf: 9891293912}],
+cpf: 123912399,
+data_criacao: new Date('2018-05-38')}]);
+
+// INSERINDO DADOS NA COLECAO AMIGOS
+
+ use('facebook');
+  db.amigos.insertMany( [ 
+
+{cpf: 1243987732, amigos: [{
+cpf: 0984256384823, NOME: 'Ana', SOBRENOME: 'Martinez'},
+{cpf: 234546543334,NOME: 'Beatriz', SOBRENOME: 'Pinzon'}]},
+
+{cpf: 1243987732, amigos: [{
+cpf: 09842384823, NOME: 'Romero', SOBRENOME: 'Perez'},
+{cpf: 2342346543334,NOME: 'Julieta', SOBRENOME: 'Carvajal'}]},
+
+{cpf: 1243987732, amigos: [{
+cpf: 09842384823, NOME: 'Rodrigo', SOBRENOME: 'Gutierrez'},
+{cpf: 234546543334,NOME: 'Sofia', SOBRENOME: 'Urdaneta'}]},
+
+{cpf: 12456987732, amigos: [{
+cpf: 09842784823, NOME: 'Florinda', SOBRENOME: 'Tulipan'},
+{cpf: 234546543334,NOME: 'Karim', SOBRENOME: 'Benzema'}]},
+
+{cpf: 1243987732, amigos: [{
+cpf: 098478384823, NOME: 'Emilio', SOBRENOME: 'Lovera'},
+{cpf: 234534543334,NOME: 'Gustavo', SOBRENOME: 'Aguado'}]}]);
+
+// TERMINAMOS DE FAZER OS 5 INSERTS.
+
+// 1 Listar dados em cada uma das collections, utilizando a operação find()
+
+use('facebook');
+db.usuarios.find();
+
+use('facebook');
+db.grupo.find();
+
+use('facebook');
+db.post.find();
+
+use('facebook');
+db.amigos.find(); 
+    
+// Listar dados em cada uma das collections utilizando a operação find() e alguma
+// operação adicional (por exemplo, limit() ou algum critério de busca)
+
+   use('facebook')
+   db.usuarios.find(
+{ nome: 'Victor' });
+
+   use('facebook');
+   db.grupo.find(
+{ nome:'Grupo da arte'});
+
+use('facebook');
+db.post.find(
+{titulo: 'A tecnologia na atualidade'});
+
+use('facebook');
+db.amigos.find(
+{cpf: 1243987732});
+
+
+/*
+Realizar a atualização do campo “sobrenome” na collection de usuários
+★ Deletar um documento em uma collection
+
+★ Deletar uma collection e verificar que todos os documentos 
+foram deletados também*/
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+
+
+
+

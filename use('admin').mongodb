@@ -157,12 +157,30 @@ db.amigos.find(
 {cpf: 1243987732});
 
 
-/*
-Realizar a atualização do campo “sobrenome” na collection de usuários
-★ Deletar um documento em uma collection
+// Realizar a atualização do campo “sobrenome” na collection de usuários
 
-★ Deletar uma collection e verificar que todos os documentos 
+use('facebook');
+db.usuarios.updateOne(
+   { senha: 91423 },
+   { $set:
+      {
+        sobrenome: 'Lopez Terán' }
+   }
+); 
+
+// ★ Deletar um documento em uma collection
+use('facebook');
+db.post.deleteOne({"_id": ObjectId("62f96e92d944b673f3a85469")});
+
+
+/*   Deletar uma collection e verificar que todos os documentos 
 foram deletados também*/
+
+
+use('facebook')
+db.amigos.drop();
+
+// TERMINEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
 
 
